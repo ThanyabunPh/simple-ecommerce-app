@@ -1,5 +1,6 @@
 import { View, Text, Image, ScrollView, TouchableOpacity } from "react-native";
 import { FontAwesome } from "@expo/vector-icons";
+import { Href, useRouter } from "expo-router";
 
 interface ProductListProps {
   products: {
@@ -11,11 +12,22 @@ interface ProductListProps {
 }
 
 const ProductList = ({ products }: ProductListProps) => {
+  const router = useRouter();
+  const onProductPress = (id: String) => {
+    router.push(("/(app)/details/" + id) as Href);
+  };
+
   return (
     <ScrollView>
       <View className="flex-row flex-wrap">
         {products.map((product) => (
-          <TouchableOpacity key={product.id} className="w-1/2 p-1">
+          <TouchableOpacity
+            key={product.id}
+            className="w-1/2 p-1"
+            onPress={() => {
+              onProductPress(product.id);
+            }}
+          >
             <View className="bg-white shadow-black">
               <View className="flex-1">
                 <Image

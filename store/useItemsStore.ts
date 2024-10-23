@@ -7,6 +7,7 @@ type ItemsStore = {
   loading: boolean;
   error: null;
   fetchData: () => void;
+  fetchOneData: (id: string) => void;
 };
 
 const useItemsStore = create<ItemsStore>()((set) => ({
@@ -23,6 +24,23 @@ const useItemsStore = create<ItemsStore>()((set) => ({
         ? Object.keys(data).map((key) => ({ id: key, ...data[key] }))
         : [];
       set({ items, loading: false });
+    } catch (error) {
+      //@ts-expect-error
+      set({ error: error.message, loading: false });
+    }
+  },
+  fetchOneData: async (id: string) => {
+    set({ loading: true });
+    try {
+      const dbRef = ref(database, `items/${id}`);
+      const snapshot = await get(dbRef);
+      const data = snapshot.val();
+      if (data) {
+        set({ items: [data], loading: false }); // Store the single item in items array
+      } else {
+        //@ts-expect-error
+        set({ error: "Item not found", loading: false });
+      }
     } catch (error) {
       //@ts-expect-error
       set({ error: error.message, loading: false });
