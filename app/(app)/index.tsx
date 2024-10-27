@@ -17,6 +17,7 @@ const AppIndex = () => {
   const error = useItemsStore((state) => state.error);
   const fetchData = useItemsStore((state) => state.fetchData);
   const { logout } = useAuthStore();
+
   const user = useAuthStore((state) => state.user);
 
   useFocusEffect(

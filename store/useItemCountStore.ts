@@ -7,11 +7,11 @@ interface ItemsCount {
   clearCount: () => void;
 }
 
-const useItemsCountStore = create<ItemsCount>((set) => ({
+const useItemsCount = create<ItemsCount>((set) => ({
   count: 1,
   increase: () => set((state) => ({ count: state.count + 1 })),
   decrease: () => set((state) => ({ count: state.count - 1 })),
   clearCount: () => set({ count: 1 }),
 }));
 
-export default useItemsCountStore;
+export default useItemsCount;

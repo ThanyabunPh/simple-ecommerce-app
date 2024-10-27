@@ -22,7 +22,7 @@ const ProductList = ({ products }: ProductListProps) => {
       <View className="flex-row flex-wrap">
         {products.map((product) => (
           <TouchableOpacity
-            key={product.id}
+            key={product.image}
             className="w-1/2 p-1"
             onPress={() => {
               onProductPress(product.id);

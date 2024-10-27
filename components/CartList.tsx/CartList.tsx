@@ -1,7 +1,7 @@
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import React, { useEffect } from "react";
+import React from "react";
 import AntDesign from "@expo/vector-icons/AntDesign";
-import useCartStore from "@/store/useItemCartStore "; // Adjust the import path
+import useCartStore from "@/store/useItemCartStore"; // Adjust the import path
 import useAuthStore from "@/store/useAuthStore";
 
 interface item {

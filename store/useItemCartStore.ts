@@ -48,11 +48,11 @@ const useCartStore = create<CartState>((set) => ({
         total: newTotal,
       };
     });
-    set({ isLoading: false }); // Reset loading to false
+    set({ isLoading: false });
   },
 
   removeItem: async (id, session) => {
-    set({ isLoading: true }); // Set loading to true
+    set({ isLoading: true });
     set((state) => {
       const itemToRemove = state.Carts.find((item) => item.id === id);
       if (!itemToRemove) return state;

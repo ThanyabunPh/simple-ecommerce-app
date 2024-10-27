@@ -39,7 +39,7 @@ const Login = () => {
       await login(email, password);
       router.replace("/(app)");
     } catch (err) {
-      setError("Login failed. Please check your credentials.");
+      setError("Login failed. Please check your email or password.");
     }
   };
 

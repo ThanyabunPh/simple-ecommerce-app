@@ -44,12 +44,6 @@ const useAuthStore = create<AuthState>((set) => ({
       throw error;
     }
   },
-  logout: async () => {
-    set({ isLoading: true });
-    await AsyncStorage.removeItem("session");
-    await AsyncStorage.removeItem("email");
-    set({ isLoading: false });
-  },
   register: async (email: string, password: string) => {
     set({ isLoading: true });
     try {
@@ -72,10 +66,15 @@ const useAuthStore = create<AuthState>((set) => ({
       throw error;
     }
   },
+  logout: async () => {
+    set({ isLoading: true });
+    await AsyncStorage.removeItem("session");
+    await AsyncStorage.removeItem("email");
+    set({ isLoading: false });
+  },
   fetchSession: async () => {
     const session = await AsyncStorage.getItem("session");
     const user = await AsyncStorage.getItem("email");
-    console.log("🚀 ~ fetchSession: ~ user:", user);
     set({ session: session, user: user });
   },
 }));

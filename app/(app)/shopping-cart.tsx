@@ -1,10 +1,9 @@
 import { View, Text, TouchableOpacity } from "react-native";
 import React, { useEffect } from "react";
 import { useRouter } from "expo-router";
-import useCartStore from "@/store/useItemCartStore ";
-import { Ionicons } from "@expo/vector-icons";
+import useCartStore from "@/store/useItemCartStore";
+import { Ionicons, FontAwesome6 } from "@expo/vector-icons";
 import CartList from "@/components/CartList.tsx/CartList";
-import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import useAuthStore from "@/store/useAuthStore";
 
 const ShopingCart = () => {

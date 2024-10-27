@@ -9,7 +9,7 @@ import {
 } from "react-native";
 import useItemsStore from "@/store/useItemsStore";
 import useItemsCountStore from "@/store/useItemCountStore";
-import useCartStore from "@/store/useItemCartStore ";
+import useCartStore from "@/store/useItemCartStore";
 import { useEffect } from "react";
 
 import { FontAwesome } from "@expo/vector-icons";
@@ -42,8 +42,20 @@ export default function DetailsScreen() {
     }
   }, [id, fetchOneData]);
 
-  if (loading) return <Text>Loading...</Text>;
-  if (error) return <Text>{error}</Text>;
+  if (loading)
+    return (
+      <View className="flex-1 justify-center items-center">
+        <ActivityIndicator size={50} />
+      </View>
+    );
+  if (error)
+    return (
+      <View className="flex-1 justify-center items-center">
+        <Text className="text-red-500">
+          Something when wrong, please try again.
+        </Text>
+      </View>
+    );
 
   const handleCartItems = () => {
     addItem(
